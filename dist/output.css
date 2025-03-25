@@ -7233,10 +7233,22 @@ ul.scrollmenu a:hover {
     .post--img .thumb .imgss{
         height: 350px;
     }
+    .div-ipad{
+        display: none;
+    }
+    .div-mobile{
+        display: block;
+    }
 }
 
 
 @media (min-width:992px) {
+    .div-ipad{
+        display: block;
+    }
+    .div-mobile{
+        display: none;
+    }
     .post--img .thumb .imgss{
         height: 232px;
     }
