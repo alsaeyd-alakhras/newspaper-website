@@ -88,9 +88,9 @@ Author URI  : https://themeforest.net/user/themelooks
         display: block !important;
         position: fixed;
         top: 0;
-        left: -300px;
+        left: -400px;
         bottom: 0;
-        width: 250px;
+        width: 345px;
         height: auto !important;
         margin: 0;
         color: #777;
@@ -243,7 +243,44 @@ Author URI  : https://themeforest.net/user/themelooks
     }
 }
 
+@media (min-width:767px) {
+    .header--menu-links{
+        overflow: visible;
+    }
+    .header--menu-links>.dropdown>.dropdown-menu {
+        float: none;
+        position: absolute;
+        border-bottom-width: 0;
+        box-shadow: none;
+        top: 0;
+        left: -94px;
+        width: 184px;
+    }
+    .header--menu-links>.dropdown>.dropdown-menu>li{
+        display: block;
+    }
+}
+@media (min-width:992px) {
+    .header--menu-links{
+        overflow: visible;
+    }
+    .header--menu-links>.dropdown>.dropdown-menu {
+        float: none;
+        position: absolute;
+        border-bottom-width: 0;
+        box-shadow: none;
+        top: 75px;
+        left: 0;
+        width: 750px;
+    }
+    .header--menu-links>.dropdown>.dropdown-menu>li{
+        display: inline-block;
+    }
+
+}
+
 @media screen and (max-width:767px) {
+
     .float--xs-none {
         float: none
     }
