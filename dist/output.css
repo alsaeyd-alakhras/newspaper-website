@@ -7329,13 +7329,13 @@ ul.scrollmenu a:hover {
         font-size: 18px;
     }
     .container {
-        width: 96%;
+        width: 1175px;
     }
 }
 
 @media (min-width:1400px) {
     .container {
-        width: 94%;
+        width: 1385px;
     }
 }
 
