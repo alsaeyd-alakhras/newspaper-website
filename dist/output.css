@@ -2,19 +2,6 @@
 @tailwind components;
 
 /* @tailwind utilities; */
-
-@layer base {
-    @font-face {
-        font-family: "Cairo";
-        src: url("..");
-    }
-}
-
-@font-face {
-    font-family: "Cairo";
-    src: url("../assets/index_assets/fonts/Tajawal-Regular.ttf");
-}
-
 article,
 aside,
 details,
@@ -56,12 +43,12 @@ label,
 html,
 .page-title,
 .cart_top span {
-    font-family: "Cairo";
+    font-family: "Almarai";
 }
 
 body {
     color: #777;
-    font-family: "Cairo";
+    font-family: "Almarai";
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
@@ -2016,7 +2003,7 @@ body.boxed>.wrapper {
 .social--widget.style--2 .nav>li>a>.text>span {
     display: block;
     padding: 12px 0 10px 60px;
-    font-family: "Cairo";
+    font-family: "Almarai";
     font-size: 14px;
     line-height: 28px;
     -webkit-transform: rotateX(0) translateZ(0);
@@ -6344,7 +6331,7 @@ ul.header--menu-links.nav>li>a:hover {
     color: #222;
     background-color: #eee;
     border-bottom-width: 0;
-    font-family: "Cairo";
+    font-family: "Almarai";
     font-size: 18px;
     line-height: 28px;
     font-weight: 700
@@ -6670,7 +6657,7 @@ ul.header--menu-links.nav>li>a:hover {
 .checkout--billing-info .panel-group .panel-title label span {
     display: block;
     padding-left: 20px;
-    font-family: "Cairo";
+    font-family: "Almarai";
     font-size: 14px;
     line-height: 24px;
     font-weight: 300
