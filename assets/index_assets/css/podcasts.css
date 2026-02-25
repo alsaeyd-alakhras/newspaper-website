@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
 }
-body{
+body {
   font-family: "Almarai", sans-serif !important;
 }
 /* ========================= */
@@ -45,20 +45,26 @@ body{
 /* Grid 5 أعمدة */
 .podcast-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 /* Card */
-.podcast-card {
+.podcast-one-card {
   overflow: hidden;
   cursor: pointer;
   transition:
     transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
     box-shadow 0.35s ease;
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
-.podcast-card img {
+.podcast-one-card img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -66,9 +72,89 @@ body{
 }
 
 /* Hover Animation */
-.podcast-card:hover {
+.podcast-one-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+         News Card Media Section
+         ============================================ */
+.podcast-one-card__media {
+  position: relative;
+  width: 100%;
+  padding-bottom: 63.25%; /* Aspect Ratio 16:9 */
+  overflow: hidden;
+  background-color: #e0e0e0;
+}
+
+.podcast-one-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.podcast-one-card:hover .podcast-one-card__image {
+  transform: scale(1.03);
+}
+/* ============================================
+         Podcast Card Body Section
+         ============================================ */
+.podcast-one-card__body {
+  padding: 14px 18px 14px;
+  background-color: #ffffff;
+}
+
+/* ============================================
+         Category مع الخط الأحمر العمودي
+         ============================================ */
+.podcast-one-card__category {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+
+/* الخط الأحمر العمودي بجانب التصنيف */
+.podcast-one-card__category::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 22px;
+  border-radius: 10px;
+  background-color: #9c0000;
+  flex-shrink: 0;
+}
+
+/* ============================================
+         Title - العنوان
+         ============================================ */
+.podcast-one-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1e1e;
+  line-height: 1.5;
+  margin: 0;
+
+  /* Line Clamp - عرض سطرين فقط */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: color 0.3s ease;
+}
+
+.podcast-one-card:hover .podcast-one-card__title {
+  color: #9c0000;
 }
 
 /* ========================= */
@@ -478,7 +564,7 @@ body{
   mask-size: 100% 100%;
 }
 
-.card-meta-duration{
+.card-meta-duration {
   flex: 1;
 }
 

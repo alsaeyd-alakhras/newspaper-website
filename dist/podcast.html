@@ -335,7 +335,119 @@
                 display: -webkit-box !important;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 3;
+                line-clamp: 3;
                 overflow: hidden;
+            }
+
+            .hero-video-play {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 74px;
+                height: 74px;
+                border: none;
+                border-radius: 50%;
+                background: rgba(196, 0, 0, 0.85);
+                color: #fff;
+                cursor: pointer;
+                z-index: 3;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.2s ease, background 0.2s ease;
+            }
+
+            .hero-video-play:hover {
+                transform: translate(-50%, -50%) scale(1.05);
+                background: rgba(160, 0, 0, 0.92);
+            }
+
+            .hero-video-play.is-hidden {
+                display: none;
+            }
+
+            .media-type-badge {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 56px;
+                height: 24px;
+                padding: 0 10px;
+                border-radius: 999px;
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 1;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+
+            .media-type-badge--audio {
+                background: #2b6cb0;
+                color: #fff;
+            }
+
+            .media-type-badge--video {
+                background: #c40000;
+                color: #fff;
+            }
+
+            .ep-type {
+                font-size: 12px;
+                font-weight: 700;
+                min-width: 44px;
+                text-align: center;
+                color: #fff;
+                background: #4a4a4a;
+                border-radius: 999px;
+                padding: 2px 8px;
+            }
+
+            .video-modal {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.75);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            }
+
+            .video-modal.is-open {
+                display: flex;
+            }
+
+            .video-modal__content {
+                position: relative;
+                width: min(900px, 92vw);
+                background: #111;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            .video-modal__close {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 34px;
+                height: 34px;
+                border: none;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.55);
+                color: #fff;
+                font-size: 22px;
+                line-height: 1;
+                cursor: pointer;
+                z-index: 2;
+            }
+
+            .video-modal__player {
+                width: 100%;
+                max-height: 78vh;
+                display: block;
+                background: #000;
             }
         </style>
 
@@ -350,7 +462,7 @@
         <div class="news--ticker">
             <div class="main-content--section ">
                 <div class="container">
-                    <div class="row " style=" ">
+                    <div class="row ">
                         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 ">
                             <div class="acme-news-ticker ">
                                 <div class="acme-news-ticker-label ">تحديثات الأخبار</div>
@@ -429,9 +541,14 @@
                     <section class="podcast-hero">
 
                         <!-- ══ Right: Program Image ══ -->
-                        <div class="hero-image-wrap">
-                            <img src="../assets/in-img/podcasts/6.png"
-                                alt="أثير الكرة" class="hero-img" />
+                        <div class="hero-image-wrap" data-type="video" data-video-src="../assets/0217.mp4"
+                            data-audio-src="../assets/aodio.mp3">
+                            <img src="../assets/in-img/podcasts/6.png" alt="أثير الكرة" class="hero-img" />
+                            <button class="hero-video-play is-hidden" type="button" aria-label="تشغيل الفيديو">
+                                <svg viewBox="0 0 24 24" fill="white" width="30" height="30">
+                                    <polygon points="7,5 20,12 7,19" />
+                                </svg>
+                            </button>
                             <!-- Gradient overlay on left edge for smooth blend -->
                             <div class="hero-img-fade"></div>
                         </div>
@@ -512,10 +629,13 @@
                         <!-- ══════════════════════════════════
                              A) Current Episode Player Card
                         ══════════════════════════════════ -->
-                        <div class="episode-card" data-audio-src="../assets/aodio.mp3">
+                        <div class="episode-card" data-type="video" data-audio-src="../assets/aodio.mp3"
+                            data-video-src="../assets/0217.mp4">
 
                             <!-- Title -->
-                            <h2 class="episode-title">2026.. عام ميركاتو المدربين</h2>
+                            <h2 class="episode-title">2026.. عام ميركاتو المدربين
+                                <span class="media-type-badge media-type-badge--video">فيديو</span>
+                            </h2>
 
                             <!-- Description -->
                             <p class="episode-desc">
@@ -607,8 +727,10 @@
                             <div class="episodes-list">
 
                                 <!-- Row 1 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">6 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -619,8 +741,10 @@
                                 </a>
 
                                 <!-- Row 2 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3">
+                                <a href="#" class="ep-row" data-type="video" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="../assets/0217.mp4">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">فيديو</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">6 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -631,8 +755,10 @@
                                 </a>
 
                                 <!-- Row 3 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">6 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -643,8 +769,10 @@
                                 </a>
 
                                 <!-- Row 4 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">6 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -655,8 +783,10 @@
                                 </a>
 
                                 <!-- Row 5 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3" style="display: none;">
+                                <a href="#" class="ep-row" data-type="video" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="../assets/0217.mp4" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">فيديو</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">6 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -667,8 +797,10 @@
                                 </a>
 
                                 <!-- Row 6 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3" style="display: none;">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">5 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -679,8 +811,10 @@
                                 </a>
 
                                 <!-- Row 7 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3" style="display: none;">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">4 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -691,8 +825,10 @@
                                 </a>
 
                                 <!-- Row 8 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3" style="display: none;">
+                                <a href="#" class="ep-row" data-type="video" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="../assets/0217.mp4" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">فيديو</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">3 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -703,8 +839,10 @@
                                 </a>
 
                                 <!-- Row 9 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3" style="display: none;">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">2 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -715,8 +853,10 @@
                                 </a>
 
                                 <!-- Row 10 -->
-                                <a href="#" class="ep-row" data-audio-src="../assets/aodio.mp3" style="display: none;">
+                                <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
+                                    data-video-src="" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
+                                    <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
                                     <span class="ep-date">1 فبراير 2026</span>
                                     <button class="play-btn play-btn--small" aria-label="تشغيل">
@@ -745,62 +885,126 @@
                         </div>
 
                         <div class="podcast-grid">
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/1.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/1.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/2.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/2.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/3.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/3.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/4.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/4.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/2.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/5.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/1.png" alt="">
-                            </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/3.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/2.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/4.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/3.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/2.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/4.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/3.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/5.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
+                            <a href="#" class="podcast-one-card">
+                                <div class="podcast-one-card__media">
+                                    <img src="../assets/in-img/podcasts/4.png"
+                                        alt="نتنياهو يحرب عن علقه من تعاظم قوة الجيش المصري"
+                                        class="podcast-one-card__image">
 
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/2.png" alt="">
+                                </div>
+                                <div class="podcast-one-card__body">
+                                    <div class="podcast-one-card__category">بودكاست</div>
+                                    <h3 class="podcast-one-card__title">عنوان البودكاست</h3>
+                                </div>
                             </a>
-
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/3.png" alt="">
-                            </a>
-
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/4.png" alt="">
-                            </a>
-
-                            <a href="#" class="podcast-card">
-                                <img src="../assets/in-img/podcasts/5.png" alt="">
-                            </a>
-
                         </div>
 
                     </section>
@@ -934,8 +1138,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal__content">
+            <button class="video-modal__close" id="videoModalClose" aria-label="إغلاق">×</button>
+            <video class="video-modal__player" id="videoModalPlayer" controls preload="none">
+                <source id="videoModalSource" src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // ═══════════════════════════════════════════════
             // المهمة الأولى: زر "شاهد المزيد"
             // ═══════════════════════════════════════════════
@@ -945,137 +1158,216 @@
             const totalRows = $episodeRows.length;
             const $ctaBtn = $('.cta-btn');
 
-            $ctaBtn.on('click', function(e) {
+            $ctaBtn.on('click', function (e) {
                 e.preventDefault();
-                
                 visibleCount += itemsPerLoad;
-                
                 $episodeRows.slice(0, visibleCount).fadeIn(400);
-                
                 if (visibleCount >= totalRows) {
                     $(this).fadeOut(300);
                 }
             });
 
             // ═══════════════════════════════════════════════
-            // المهمة الثانية: البطاقة الرئيسية مع Waveform
+            // المهمة الثانية: تشغيل ديناميكي صوت/فيديو
             // ═══════════════════════════════════════════════
             const $episodeCard = $('.episode-card');
             const $mainPlayBtn = $episodeCard.find('.play-btn--large');
-            const audioSrc = $episodeCard.attr('data-audio-src');
-            
+            const $heroWrap = $('.hero-image-wrap');
+            const $heroVideoPlayBtn = $('.hero-video-play');
+            const $mediaBadge = $episodeCard.find('.media-type-badge');
+            const $waveform = $('.waveform');
+
+            const $videoModal = $('#videoModal');
+            const $videoModalClose = $('#videoModalClose');
+            const videoModalPlayer = document.getElementById('videoModalPlayer');
+            const videoModalSource = document.getElementById('videoModalSource');
+
             let mainAudio = null;
             let isMainPlaying = false;
+            const listAudios = {};
 
-            if (audioSrc) {
-                mainAudio = new Audio(audioSrc);
-                
-                mainAudio.addEventListener('loadedmetadata', function() {
-                    const duration = formatTime(mainAudio.duration);
-                    $episodeCard.find('.time-total').text(duration);
-                });
+            const currentEpisode = {
+                type: normalizeType($episodeCard.attr('data-type')),
+                audioSrc: $episodeCard.attr('data-audio-src') || '',
+                videoSrc: $episodeCard.attr('data-video-src') || ''
+            };
 
-                mainAudio.addEventListener('timeupdate', function() {
-                    const current = formatTime(mainAudio.currentTime);
-                    $episodeCard.find('.time-current').text(current);
-                    
-                    const progress = (mainAudio.currentTime / mainAudio.duration) * 100;
-                    updateWaveform(progress);
-                });
+            setMainEpisodeMedia(currentEpisode.type, currentEpisode.audioSrc, currentEpisode.videoSrc);
 
-                mainAudio.addEventListener('ended', function() {
-                    isMainPlaying = false;
-                    updateMainPlayButton(false);
-                });
+            $mainPlayBtn.on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                handlePlayAction(currentEpisode.type, currentEpisode.audioSrc, currentEpisode.videoSrc);
+            });
 
-                $mainPlayBtn.on('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    stopAllListAudios();
-                    
-                    if (isMainPlaying) {
-                        mainAudio.pause();
-                        isMainPlaying = false;
-                    } else {
-                        mainAudio.play();
-                        isMainPlaying = true;
-                    }
-                    
-                    updateMainPlayButton(isMainPlaying);
-                });
-            }
+            $heroVideoPlayBtn.on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                openVideoModal(currentEpisode.videoSrc);
+            });
 
-            function updateMainPlayButton(isPlaying) {
-                const $svg = $mainPlayBtn.find('svg');
-                
-                if (isPlaying) {
-                    $svg.html('<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>');
-                    $mainPlayBtn.attr('aria-label', 'إيقاف');
-                } else {
-                    $svg.html('<polygon points="6,4 20,12 6,20" />');
-                    $mainPlayBtn.attr('aria-label', 'تشغيل');
+            $videoModalClose.on('click', function () {
+                closeVideoModal();
+            });
+
+            $videoModal.on('click', function (e) {
+                if (e.target === this) {
+                    closeVideoModal();
                 }
-            }
+            });
 
-            function updateWaveform(progress) {
-                const $waveform = $('.waveform');
-                $waveform.css('background', `linear-gradient(to left, #e0e0e0 ${100 - progress}%, #1e90ff ${100 - progress}%)`);
-            }
+            $(document).on('keydown', function (e) {
+                if (e.key === 'Escape' && $videoModal.hasClass('is-open')) {
+                    closeVideoModal();
+                }
+            });
 
             // ═══════════════════════════════════════════════
             // المهمة الثالثة: أزرار القائمة
             // ═══════════════════════════════════════════════
-            const listAudios = {};
-            
-            $('.ep-row').each(function(index) {
+            $episodeRows.each(function (index) {
                 const $row = $(this);
-                const audioSrc = $row.attr('data-audio-src');
+                const rowType = normalizeType($row.attr('data-type'));
+                const rowAudioSrc = $row.attr('data-audio-src') || '';
                 const $playBtn = $row.find('.play-btn--small');
-                
-                if (audioSrc) {
-                    const audio = new Audio(audioSrc);
+
+                if (rowType === 'audio' && rowAudioSrc) {
+                    const audio = new Audio(rowAudioSrc);
                     listAudios[index] = {
                         audio: audio,
                         isPlaying: false,
                         $btn: $playBtn
                     };
 
-                    $playBtn.on('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        if (mainAudio && isMainPlaying) {
-                            mainAudio.pause();
-                            isMainPlaying = false;
-                            updateMainPlayButton(false);
-                        }
-                        
-                        stopAllListAudios(index);
-                        
-                        const item = listAudios[index];
-                        
-                        if (item.isPlaying) {
-                            item.audio.pause();
-                            item.isPlaying = false;
-                        } else {
-                            item.audio.play();
-                            item.isPlaying = true;
-                        }
-                        
-                        updateListPlayButton(item.$btn, item.isPlaying);
-                    });
-
-                    audio.addEventListener('ended', function() {
+                    audio.addEventListener('ended', function () {
                         listAudios[index].isPlaying = false;
                         updateListPlayButton($playBtn, false);
                     });
                 }
+
+                $row.on('click', function (e) {
+                    if ($(e.target).closest('.play-btn--small').length) return;
+                    e.preventDefault();
+                    setEpisodeFromElement($row);
+                });
+
+                $playBtn.on('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const media = getMediaFromElement($row);
+                    setEpisodeFromElement($row);
+
+                    if (media.type === 'video') {
+                        stopAllListAudios();
+                        openVideoModal(media.videoSrc);
+                        return;
+                    }
+
+                    if (mainAudio && isMainPlaying) {
+                        mainAudio.pause();
+                        isMainPlaying = false;
+                        updateMainPlayButton(false);
+                    }
+
+                    stopAllListAudios(index);
+                    const item = listAudios[index];
+                    if (!item) return;
+
+                    if (item.isPlaying) {
+                        item.audio.pause();
+                        item.isPlaying = false;
+                    } else {
+                        item.audio.play();
+                        item.isPlaying = true;
+                    }
+
+                    updateListPlayButton(item.$btn, item.isPlaying);
+                });
             });
 
+            function handlePlayAction(type, audioSrc, videoSrc) {
+                if (type === 'video') {
+                    stopAllListAudios();
+                    openVideoModal(videoSrc);
+                    return;
+                }
+
+                stopAllListAudios();
+                if (!mainAudio && audioSrc) {
+                    setMainEpisodeMedia('audio', audioSrc, '');
+                }
+
+                if (!mainAudio) return;
+
+                if (isMainPlaying) {
+                    mainAudio.pause();
+                    isMainPlaying = false;
+                } else {
+                    mainAudio.play();
+                    isMainPlaying = true;
+                }
+
+                updateMainPlayButton(isMainPlaying);
+            }
+
+            function setEpisodeFromElement($sourceEl) {
+                const media = getMediaFromElement($sourceEl);
+                const title = $sourceEl.find('.ep-title').first().text().trim();
+
+                if (title) {
+                    const badgeHtml = $mediaBadge.length ? ` ${$mediaBadge.prop('outerHTML')}` : '';
+                    $episodeCard.find('.episode-title').html(`${title}${badgeHtml}`);
+                }
+
+                setMainEpisodeMedia(media.type, media.audioSrc, media.videoSrc);
+            }
+
+            function setMainEpisodeMedia(type, audioSrc, videoSrc) {
+                currentEpisode.type = normalizeType(type);
+                currentEpisode.audioSrc = audioSrc || '';
+                currentEpisode.videoSrc = videoSrc || '';
+
+                $episodeCard.attr('data-type', currentEpisode.type);
+                $episodeCard.attr('data-audio-src', currentEpisode.audioSrc);
+                $episodeCard.attr('data-video-src', currentEpisode.videoSrc);
+                $heroWrap.attr('data-type', currentEpisode.type);
+                $heroWrap.attr('data-audio-src', currentEpisode.audioSrc);
+                $heroWrap.attr('data-video-src', currentEpisode.videoSrc);
+
+                updateMediaBadge(currentEpisode.type);
+                toggleHeroPlayButton(currentEpisode.type, currentEpisode.videoSrc);
+
+                if (mainAudio) {
+                    mainAudio.pause();
+                    mainAudio.currentTime = 0;
+                    mainAudio = null;
+                }
+                isMainPlaying = false;
+                updateMainPlayButton(false);
+                updateWaveform(0);
+                resetMainTimes();
+
+                if (currentEpisode.type === 'audio' && currentEpisode.audioSrc) {
+                    mainAudio = new Audio(currentEpisode.audioSrc);
+                    mainAudio.addEventListener('loadedmetadata', function () {
+                        $episodeCard.find('.time-total').text(formatTime(mainAudio.duration));
+                    });
+                    mainAudio.addEventListener('timeupdate', function () {
+                        $episodeCard.find('.time-current').text(formatTime(mainAudio.currentTime));
+                        const progress = mainAudio.duration ? (mainAudio.currentTime / mainAudio.duration) * 100 : 0;
+                        updateWaveform(progress);
+                    });
+                    mainAudio.addEventListener('ended', function () {
+                        isMainPlaying = false;
+                        updateMainPlayButton(false);
+                    });
+                }
+            }
+
             function stopAllListAudios(exceptIndex = -1) {
-                Object.keys(listAudios).forEach(function(key) {
-                    if (parseInt(key) !== exceptIndex) {
+                Object.keys(listAudios).forEach(function (key) {
+                    if (parseInt(key, 10) !== exceptIndex) {
                         const item = listAudios[key];
                         if (item.isPlaying) {
                             item.audio.pause();
@@ -1087,9 +1379,44 @@
                 });
             }
 
+            function openVideoModal(videoSrc) {
+                if (!videoSrc) return;
+
+                if (mainAudio && isMainPlaying) {
+                    mainAudio.pause();
+                    isMainPlaying = false;
+                    updateMainPlayButton(false);
+                }
+
+                videoModalSource.src = videoSrc;
+                videoModalPlayer.load(); // lazy load: التحميل الفعلي يبدأ وقت الفتح فقط
+                $videoModal.addClass('is-open');
+                $('body').css('overflow', 'hidden');
+                videoModalPlayer.play().catch(function () { });
+            }
+
+            function closeVideoModal() {
+                if (!$videoModal.hasClass('is-open')) return;
+                videoModalPlayer.pause();
+                videoModalSource.src = '';
+                videoModalPlayer.load();
+                $videoModal.removeClass('is-open');
+                $('body').css('overflow', '');
+            }
+
+            function updateMainPlayButton(isPlaying) {
+                const $svg = $mainPlayBtn.find('svg');
+                if (isPlaying) {
+                    $svg.html('<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>');
+                    $mainPlayBtn.attr('aria-label', 'إيقاف');
+                } else {
+                    $svg.html('<polygon points="6,4 20,12 6,20" />');
+                    $mainPlayBtn.attr('aria-label', 'تشغيل');
+                }
+            }
+
             function updateListPlayButton($btn, isPlaying) {
                 const $svg = $btn.find('svg');
-                
                 if (isPlaying) {
                     $svg.html('<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>');
                     $btn.attr('aria-label', 'إيقاف');
@@ -1099,12 +1426,45 @@
                 }
             }
 
-            // ═══════════════════════════════════════════════
-            // دوال مساعدة
-            // ═══════════════════════════════════════════════
+            function updateWaveform(progress) {
+                const safeProgress = Math.max(0, Math.min(100, progress || 0));
+                $waveform.css('background', `linear-gradient(to left, #e0e0e0 ${100 - safeProgress}%, #1e90ff ${100 - safeProgress}%)`);
+            }
+
+            function updateMediaBadge(type) {
+                const isVideo = type === 'video';
+                const badgeText = isVideo ? 'فيديو' : 'صوت';
+                const badgeClass = isVideo ? 'media-type-badge--video' : 'media-type-badge--audio';
+                $episodeCard.find('.media-type-badge')
+                    .text(badgeText)
+                    .removeClass('media-type-badge--video media-type-badge--audio')
+                    .addClass(badgeClass);
+            }
+
+            function toggleHeroPlayButton(type, videoSrc) {
+                const isVisible = type === 'video' && !!videoSrc;
+                $heroVideoPlayBtn.toggleClass('is-hidden', !isVisible);
+            }
+
+            function resetMainTimes() {
+                $episodeCard.find('.time-current').text('00:00');
+                $episodeCard.find('.time-total').text('00:00');
+            }
+
+            function normalizeType(type) {
+                return type === 'video' ? 'video' : 'audio';
+            }
+
+            function getMediaFromElement($el) {
+                return {
+                    type: normalizeType($el.attr('data-type')),
+                    audioSrc: $el.attr('data-audio-src') || '',
+                    videoSrc: $el.attr('data-video-src') || ''
+                };
+            }
+
             function formatTime(seconds) {
                 if (isNaN(seconds)) return '00:00';
-                
                 const mins = Math.floor(seconds / 60);
                 const secs = Math.floor(seconds % 60);
                 return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
