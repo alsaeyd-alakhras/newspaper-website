@@ -167,21 +167,15 @@ body {
   }
 }
 
-@media (max-width: 1100px) {
-  .podcast-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .podcast-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .podcast-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -614,7 +608,9 @@ body {
 /* ── Card Image ── */
 .card-image-wrap {
   flex-shrink: 0;
-  height: 110px;
+  width: 100px;
+  /* height: 90px; */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
@@ -641,11 +637,6 @@ body {
 @media (max-width: 580px) {
   .episodes-grid {
     grid-template-columns: 1fr;
-  }
-
-  .card-image-wrap {
-    width: 90px;
-    height: 90px;
   }
 
   .section-title {

@@ -329,128 +329,6 @@
                 </div>
             </div>
         </header>
-
-        <style>
-            .text {
-                display: -webkit-box !important;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
-                overflow: hidden;
-            }
-
-            .hero-video-play {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 74px;
-                height: 74px;
-                border: none;
-                border-radius: 50%;
-                background: rgba(196, 0, 0, 0.85);
-                color: #fff;
-                cursor: pointer;
-                z-index: 3;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                transition: transform 0.2s ease, background 0.2s ease;
-            }
-
-            .hero-video-play:hover {
-                transform: translate(-50%, -50%) scale(1.05);
-                background: rgba(160, 0, 0, 0.92);
-            }
-
-            .hero-video-play.is-hidden {
-                display: none;
-            }
-
-            .media-type-badge {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 56px;
-                height: 24px;
-                padding: 0 10px;
-                border-radius: 999px;
-                font-size: 12px;
-                font-weight: 700;
-                line-height: 1;
-                margin-right: 10px;
-                vertical-align: middle;
-            }
-
-            .media-type-badge--audio {
-                background: #2b6cb0;
-                color: #fff;
-            }
-
-            .media-type-badge--video {
-                background: #c40000;
-                color: #fff;
-            }
-
-            .ep-type {
-                font-size: 12px;
-                font-weight: 700;
-                min-width: 44px;
-                text-align: center;
-                color: #fff;
-                background: #4a4a4a;
-                border-radius: 999px;
-                padding: 2px 8px;
-            }
-
-            .video-modal {
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.75);
-                display: none;
-                align-items: center;
-                justify-content: center;
-                z-index: 9999;
-                padding: 20px;
-            }
-
-            .video-modal.is-open {
-                display: flex;
-            }
-
-            .video-modal__content {
-                position: relative;
-                width: min(900px, 92vw);
-                background: #111;
-                border-radius: 8px;
-                overflow: hidden;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            }
-
-            .video-modal__close {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                width: 34px;
-                height: 34px;
-                border: none;
-                border-radius: 50%;
-                background: rgba(0, 0, 0, 0.55);
-                color: #fff;
-                font-size: 22px;
-                line-height: 1;
-                cursor: pointer;
-                z-index: 2;
-            }
-
-            .video-modal__player {
-                width: 100%;
-                max-height: 78vh;
-                display: block;
-                background: #000;
-            }
-        </style>
-
         <div class="posts--filter-bar style--1 hidden-xs">
             <div class="container ">
                 <ul class="nav ">
@@ -540,16 +418,11 @@
 
                     <section class="podcast-hero">
 
-                        <!-- ══ Right: Program Image ══ -->
+                        <!-- ══ Right: Program Image / Video Player ══ -->
                         <div class="hero-image-wrap" data-type="video" data-video-src="../assets/0217.mp4"
-                            data-audio-src="../assets/aodio.mp3">
+                            data-audio-src="../assets/aodio.mp3" data-image-src="../assets/in-img/podcasts/6.png">
                             <img src="../assets/in-img/podcasts/6.png" alt="أثير الكرة" class="hero-img" />
-                            <button class="hero-video-play is-hidden" type="button" aria-label="تشغيل الفيديو">
-                                <svg viewBox="0 0 24 24" fill="white" width="30" height="30">
-                                    <polygon points="7,5 20,12 7,19" />
-                                </svg>
-                            </button>
-                            <!-- Gradient overlay on left edge for smooth blend -->
+                            <video class="hero-video-player" controls preload="none" playsinline></video>
                             <div class="hero-img-fade"></div>
                         </div>
 
@@ -630,7 +503,9 @@
                              A) Current Episode Player Card
                         ══════════════════════════════════ -->
                         <div class="episode-card" data-type="video" data-audio-src="../assets/aodio.mp3"
-                            data-video-src="../assets/0217.mp4">
+                            data-video-src="../assets/0217.mp4" data-title="2026.. عام ميركاتو المدربين"
+                            data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها، وتقارير تفيد بأن أسماء أخرى على قائمة الإقالات في الفترة المقبلة."
+                            data-image-src="../assets/in-img/podcasts/6.png">
 
                             <!-- Title -->
                             <h2 class="episode-title">2026.. عام ميركاتو المدربين
@@ -728,7 +603,9 @@
 
                                 <!-- Row 1 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها، وتقارير تفيد بأن أسماء أخرى على قائمة الإقالات في الفترة المقبلة."
+                                    data-image-src="../assets/in-img/podcasts/6.png">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -742,7 +619,9 @@
 
                                 <!-- Row 2 -->
                                 <a href="#" class="ep-row" data-type="video" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="../assets/0217.mp4">
+                                    data-video-src="../assets/0217.mp4" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها، وتقارير تفيد بأن أسماء أخرى على قائمة الإقالات في الفترة المقبلة."
+                                    data-image-src="../assets/in-img/podcasts/6.png">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">فيديو</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -756,7 +635,9 @@
 
                                 <!-- Row 3 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها، وتقارير تفيد بأن أسماء أخرى على قائمة الإقالات في الفترة المقبلة."
+                                    data-image-src="../assets/in-img/podcasts/6.png">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -770,7 +651,9 @@
 
                                 <!-- Row 4 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها، وتقارير تفيد بأن أسماء أخرى على قائمة الإقالات في الفترة المقبلة."
+                                    data-image-src="../assets/in-img/podcasts/6.png">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -784,7 +667,9 @@
 
                                 <!-- Row 5 -->
                                 <a href="#" class="ep-row" data-type="video" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="../assets/0217.mp4" style="display: none;">
+                                    data-video-src="../assets/0217.mp4" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها."
+                                    data-image-src="../assets/in-img/podcasts/6.png" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">فيديو</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -798,7 +683,9 @@
 
                                 <!-- Row 6 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="" style="display: none;">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها."
+                                    data-image-src="../assets/in-img/podcasts/6.png" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -812,7 +699,9 @@
 
                                 <!-- Row 7 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="" style="display: none;">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها."
+                                    data-image-src="../assets/in-img/podcasts/6.png" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -826,7 +715,9 @@
 
                                 <!-- Row 8 -->
                                 <a href="#" class="ep-row" data-type="video" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="../assets/0217.mp4" style="display: none;">
+                                    data-video-src="../assets/0217.mp4" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها."
+                                    data-image-src="../assets/in-img/podcasts/6.png" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">فيديو</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -840,7 +731,9 @@
 
                                 <!-- Row 9 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="" style="display: none;">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها."
+                                    data-image-src="../assets/in-img/podcasts/6.png" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -854,7 +747,9 @@
 
                                 <!-- Row 10 -->
                                 <a href="#" class="ep-row" data-type="audio" data-audio-src="../assets/aodio.mp3"
-                                    data-video-src="" style="display: none;">
+                                    data-video-src="" data-title="2026.. عام ميركاتو المدربين"
+                                    data-description="في الآونة الأخيرة تخلت عدة أندية عن مدربيها."
+                                    data-image-src="../assets/in-img/podcasts/6.png" style="display: none;">
                                     <span class="ep-title">2026.. عام ميركاتو المدربين</span>
                                     <span class="ep-type">صوت</span>
                                     <span class="ep-duration">25 | 55</span>
@@ -1138,15 +1033,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal__content">
-            <button class="video-modal__close" id="videoModalClose" aria-label="إغلاق">×</button>
-            <video class="video-modal__player" id="videoModalPlayer" controls preload="none">
-                <source id="videoModalSource" src="" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
     <script>
         $(document).ready(function () {
             // ═══════════════════════════════════════════════
@@ -1168,19 +1054,15 @@
             });
 
             // ═══════════════════════════════════════════════
-            // المهمة الثانية: تشغيل ديناميكي صوت/فيديو
+            // المهمة الثانية: تشغيل ديناميكي صوت/فيديو (inline في الهيرو)
             // ═══════════════════════════════════════════════
             const $episodeCard = $('.episode-card');
             const $mainPlayBtn = $episodeCard.find('.play-btn--large');
             const $heroWrap = $('.hero-image-wrap');
-            const $heroVideoPlayBtn = $('.hero-video-play');
+            const $heroImg = $heroWrap.find('.hero-img');
+            const heroVideoPlayer = $heroWrap.find('.hero-video-player')[0];
             const $mediaBadge = $episodeCard.find('.media-type-badge');
             const $waveform = $('.waveform');
-
-            const $videoModal = $('#videoModal');
-            const $videoModalClose = $('#videoModalClose');
-            const videoModalPlayer = document.getElementById('videoModalPlayer');
-            const videoModalSource = document.getElementById('videoModalSource');
 
             let mainAudio = null;
             let isMainPlaying = false;
@@ -1189,37 +1071,18 @@
             const currentEpisode = {
                 type: normalizeType($episodeCard.attr('data-type')),
                 audioSrc: $episodeCard.attr('data-audio-src') || '',
-                videoSrc: $episodeCard.attr('data-video-src') || ''
+                videoSrc: $episodeCard.attr('data-video-src') || '',
+                imageSrc: $episodeCard.attr('data-image-src') || $heroWrap.attr('data-image-src') || '',
+                title: $episodeCard.attr('data-title') || $episodeCard.find('.episode-title').text().trim(),
+                description: $episodeCard.attr('data-description') || $episodeCard.find('.episode-desc').text().trim()
             };
 
-            setMainEpisodeMedia(currentEpisode.type, currentEpisode.audioSrc, currentEpisode.videoSrc);
+            setMainEpisodeMedia(currentEpisode);
 
             $mainPlayBtn.on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                handlePlayAction(currentEpisode.type, currentEpisode.audioSrc, currentEpisode.videoSrc);
-            });
-
-            $heroVideoPlayBtn.on('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                openVideoModal(currentEpisode.videoSrc);
-            });
-
-            $videoModalClose.on('click', function () {
-                closeVideoModal();
-            });
-
-            $videoModal.on('click', function (e) {
-                if (e.target === this) {
-                    closeVideoModal();
-                }
-            });
-
-            $(document).on('keydown', function (e) {
-                if (e.key === 'Escape' && $videoModal.hasClass('is-open')) {
-                    closeVideoModal();
-                }
+                handlePlayAction();
             });
 
             // ═══════════════════════════════════════════════
@@ -1255,12 +1118,11 @@
                     e.preventDefault();
                     e.stopPropagation();
 
-                    const media = getMediaFromElement($row);
                     setEpisodeFromElement($row);
 
-                    if (media.type === 'video') {
+                    if (currentEpisode.type === 'video') {
                         stopAllListAudios();
-                        openVideoModal(media.videoSrc);
+                        playHeroVideo();
                         return;
                     }
 
@@ -1286,16 +1148,31 @@
                 });
             });
 
-            function handlePlayAction(type, audioSrc, videoSrc) {
-                if (type === 'video') {
+            function handlePlayAction() {
+                if (currentEpisode.type === 'video') {
                     stopAllListAudios();
-                    openVideoModal(videoSrc);
+                    playHeroVideo();
                     return;
                 }
 
                 stopAllListAudios();
-                if (!mainAudio && audioSrc) {
-                    setMainEpisodeMedia('audio', audioSrc, '');
+                if (!mainAudio && currentEpisode.audioSrc) {
+                    mainAudio = new Audio(currentEpisode.audioSrc);
+                    mainAudio.addEventListener('loadedmetadata', function () {
+                        if (!mainAudio) return;
+                        $episodeCard.find('.time-total').text(formatTime(mainAudio.duration));
+                    });
+                    mainAudio.addEventListener('timeupdate', function () {
+                        if (!mainAudio) return;
+                        $episodeCard.find('.time-current').text(formatTime(mainAudio.currentTime));
+                        const progress = mainAudio.duration ? (mainAudio.currentTime / mainAudio.duration) * 100 : 0;
+                        updateWaveform(progress);
+                    });
+                    mainAudio.addEventListener('ended', function () {
+                        if (!mainAudio) return;
+                        isMainPlaying = false;
+                        updateMainPlayButton(false);
+                    });
                 }
 
                 if (!mainAudio) return;
@@ -1311,32 +1188,94 @@
                 updateMainPlayButton(isMainPlaying);
             }
 
-            function setEpisodeFromElement($sourceEl) {
-                const media = getMediaFromElement($sourceEl);
-                const title = $sourceEl.find('.ep-title').first().text().trim();
-
-                if (title) {
-                    const badgeHtml = $mediaBadge.length ? ` ${$mediaBadge.prop('outerHTML')}` : '';
-                    $episodeCard.find('.episode-title').html(`${title}${badgeHtml}`);
+            function playHeroVideo() {
+                if (!currentEpisode.videoSrc || !heroVideoPlayer) return;
+                if (mainAudio && isMainPlaying) {
+                    mainAudio.pause();
+                    isMainPlaying = false;
+                    updateMainPlayButton(false);
                 }
-
-                setMainEpisodeMedia(media.type, media.audioSrc, media.videoSrc);
+                $heroWrap.addClass('is-video');
+                $heroImg.hide();
+                /* تأخير التحميل حتى يصبح الفيديو ظاهراً (بعض المتصفحات لا تحمّل جيداً والعنصر مخفي) */
+                var videoUrl = currentEpisode.videoSrc;
+                /* إذا كان للفيديو مصدر سابق (مثلاً بعد العودة من الصوت) نضيف كسر كاش لفرض إعادة التحميل */
+                if (heroVideoPlayer.src && heroVideoPlayer.src.length > 0) {
+                    var sep = videoUrl.indexOf('?') >= 0 ? '&' : '?';
+                    videoUrl = videoUrl + sep + '_=' + (Date.now ? Date.now() : new Date().getTime());
+                }
+                heroVideoPlayer.src = videoUrl;
+                function doLoadAndPlay() {
+                    heroVideoPlayer.load();
+                    heroVideoPlayer.play().catch(function () { });
+                }
+                if (window.requestAnimationFrame) {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(doLoadAndPlay);
+                    });
+                } else {
+                    setTimeout(doLoadAndPlay, 50);
+                }
             }
 
-            function setMainEpisodeMedia(type, audioSrc, videoSrc) {
-                currentEpisode.type = normalizeType(type);
-                currentEpisode.audioSrc = audioSrc || '';
-                currentEpisode.videoSrc = videoSrc || '';
+            function setEpisodeFromElement($sourceEl) {
+                const media = getMediaFromElement($sourceEl);
+                const title = $sourceEl.attr('data-title') || $sourceEl.find('.ep-title').first().text().trim();
+                const description = $sourceEl.attr('data-description') || '';
+                const imageSrc = $sourceEl.attr('data-image-src') || '';
 
-                $episodeCard.attr('data-type', currentEpisode.type);
+                currentEpisode.type = media.type;
+                currentEpisode.audioSrc = media.audioSrc;
+                currentEpisode.videoSrc = media.videoSrc;
+                currentEpisode.title = title;
+                currentEpisode.description = description;
+                currentEpisode.imageSrc = imageSrc;
+
+                $episodeCard.attr('data-type', media.type);
+                $episodeCard.attr('data-audio-src', media.audioSrc);
+                $episodeCard.attr('data-video-src', media.videoSrc);
+                $episodeCard.attr('data-title', title);
+                $episodeCard.attr('data-description', description);
+                $episodeCard.attr('data-image-src', imageSrc);
+
+                const badgeText = media.type === 'video' ? 'فيديو' : 'صوت';
+                const badgeClass = media.type === 'video' ? 'media-type-badge--video' : 'media-type-badge--audio';
+                $episodeCard.find('.episode-title').html(`${title} <span class="media-type-badge ${badgeClass}">${badgeText}</span>`);
+                $episodeCard.find('.episode-desc').text(description);
+
+                setMainEpisodeMedia(currentEpisode);
+            }
+
+            function setMainEpisodeMedia(ep) {
+                const type = normalizeType(ep.type);
+                currentEpisode.type = type;
+                currentEpisode.audioSrc = ep.audioSrc || '';
+                currentEpisode.videoSrc = ep.videoSrc || '';
+                currentEpisode.imageSrc = ep.imageSrc || '';
+                currentEpisode.title = ep.title || '';
+                currentEpisode.description = ep.description || '';
+
+                $episodeCard.attr('data-type', type);
                 $episodeCard.attr('data-audio-src', currentEpisode.audioSrc);
                 $episodeCard.attr('data-video-src', currentEpisode.videoSrc);
-                $heroWrap.attr('data-type', currentEpisode.type);
+                $episodeCard.attr('data-image-src', currentEpisode.imageSrc);
+                $heroWrap.attr('data-type', type);
                 $heroWrap.attr('data-audio-src', currentEpisode.audioSrc);
                 $heroWrap.attr('data-video-src', currentEpisode.videoSrc);
+                $heroWrap.attr('data-image-src', currentEpisode.imageSrc);
 
-                updateMediaBadge(currentEpisode.type);
-                toggleHeroPlayButton(currentEpisode.type, currentEpisode.videoSrc);
+                updateMediaBadge(type);
+
+                /* دائماً نعرض الصورة أولاً، الفيديو يظهر فقط عند الضغط على تشغيل */
+                $heroWrap.removeClass('is-video');
+                $heroImg.show();
+                if (currentEpisode.imageSrc) {
+                    $heroImg.attr('src', currentEpisode.imageSrc);
+                }
+                if (heroVideoPlayer) {
+                    heroVideoPlayer.pause();
+                    /* لا نمسح src — تغييره لسلسلة فارغة يسبب Invalid URI حتى بدون load() */
+                }
 
                 if (mainAudio) {
                     mainAudio.pause();
@@ -1348,17 +1287,20 @@
                 updateWaveform(0);
                 resetMainTimes();
 
-                if (currentEpisode.type === 'audio' && currentEpisode.audioSrc) {
+                if (type === 'audio' && currentEpisode.audioSrc) {
                     mainAudio = new Audio(currentEpisode.audioSrc);
                     mainAudio.addEventListener('loadedmetadata', function () {
+                        if (!mainAudio) return;
                         $episodeCard.find('.time-total').text(formatTime(mainAudio.duration));
                     });
                     mainAudio.addEventListener('timeupdate', function () {
+                        if (!mainAudio) return;
                         $episodeCard.find('.time-current').text(formatTime(mainAudio.currentTime));
                         const progress = mainAudio.duration ? (mainAudio.currentTime / mainAudio.duration) * 100 : 0;
                         updateWaveform(progress);
                     });
                     mainAudio.addEventListener('ended', function () {
+                        if (!mainAudio) return;
                         isMainPlaying = false;
                         updateMainPlayButton(false);
                     });
@@ -1377,31 +1319,6 @@
                         }
                     }
                 });
-            }
-
-            function openVideoModal(videoSrc) {
-                if (!videoSrc) return;
-
-                if (mainAudio && isMainPlaying) {
-                    mainAudio.pause();
-                    isMainPlaying = false;
-                    updateMainPlayButton(false);
-                }
-
-                videoModalSource.src = videoSrc;
-                videoModalPlayer.load(); // lazy load: التحميل الفعلي يبدأ وقت الفتح فقط
-                $videoModal.addClass('is-open');
-                $('body').css('overflow', 'hidden');
-                videoModalPlayer.play().catch(function () { });
-            }
-
-            function closeVideoModal() {
-                if (!$videoModal.hasClass('is-open')) return;
-                videoModalPlayer.pause();
-                videoModalSource.src = '';
-                videoModalPlayer.load();
-                $videoModal.removeClass('is-open');
-                $('body').css('overflow', '');
             }
 
             function updateMainPlayButton(isPlaying) {
@@ -1439,11 +1356,6 @@
                     .text(badgeText)
                     .removeClass('media-type-badge--video media-type-badge--audio')
                     .addClass(badgeClass);
-            }
-
-            function toggleHeroPlayButton(type, videoSrc) {
-                const isVisible = type === 'video' && !!videoSrc;
-                $heroVideoPlayBtn.toggleClass('is-hidden', !isVisible);
             }
 
             function resetMainTimes() {
