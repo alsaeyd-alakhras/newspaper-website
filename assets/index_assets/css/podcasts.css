@@ -609,7 +609,7 @@ body {
 .card-image-wrap {
   flex-shrink: 0;
   width: 100px;
-  /* height: 90px; */
+  height: 77px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
